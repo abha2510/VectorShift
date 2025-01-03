@@ -16,6 +16,13 @@ export const BaseNode = ({
 }) => {
   const [nodeData, setNodeData] = useState(data);
 
+  const defaultHandleStyle = {
+    background: "#fff",
+    width: "15px",
+    height: "15px",
+    border: "1px solid #000",
+  };
+
   // Ensure default values are set when the component mounts
   useEffect(() => {
     const defaultData = {};
@@ -45,28 +52,23 @@ export const BaseNode = ({
   return (
     <div
       style={{
-        width: 200,
-        padding: "10px",
-        border: "1px solid black",
-        height: 80,
         ...nodeStyle,
       }}
-      className={className}
+      className={`px-5 py-4 w-80 border-4 bg-white flex flex-col gap-2  border-blue-300 shadow-lg rounded-lg  ${className}`}
     >
       <div>
-        <span>{label}</span>
+        <span className="text-blue-500 text-lg">{label}</span>
       </div>
       {children && <div>{children}</div>}
-      <div>
+      <div className="flex flex-col gap-4">
         {customFields?.map((field, index) => (
-          <label key={index}>
-            {field.label}:
-            <FieldRenderer
-              field={field}
-              value={nodeData[field.name]}
-              onChange={handleInputChange}
-            />
-          </label>
+          <FieldRenderer
+            key={index}
+            field={field}
+            value={nodeData[field.name]}
+            onChange={handleInputChange}
+            label={field.label}
+          />
         ))}
       </div>
       {inputHandles?.map((handle, index) => (
@@ -75,7 +77,8 @@ export const BaseNode = ({
           type="target"
           position={Position.Left}
           id={handle.id}
-          style={{ ...handleStyle, ...handle.style }}
+          style={{ ...handleStyle, ...handle.style, ...defaultHandleStyle }}
+          className="bg-white w-3 h-3 rounded-full border-1 border-purple-500"
         />
       ))}
       {outputHandles?.map((handle, index) => (
@@ -84,7 +87,8 @@ export const BaseNode = ({
           type="source"
           position={Position.Right}
           id={handle.id}
-          style={{ ...handleStyle, ...handle.style }}
+          className="bg-white w-3 h-3 rounded-full border-1 border-purple-500"
+          style={{ ...handleStyle, ...handle.style, ...defaultHandleStyle }}
         />
       ))}
     </div>

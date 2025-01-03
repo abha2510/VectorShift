@@ -2,6 +2,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
+import { Button } from "@nextui-org/react";
 
 export const SubmitButton = () => {
   const { nodes, edges } = useStore(
@@ -77,9 +78,9 @@ export const SubmitButton = () => {
         justifyContent: "center",
       }}
     >
-      <button onClick={handleSubmit} type="submit">
+      <Button onClick={handleSubmit} color="primary" size="lg" type="submit">
         Submit
-      </button>
+      </Button>
       <ToastContainer />
     </div>
   );

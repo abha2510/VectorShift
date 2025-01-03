@@ -1,9 +1,17 @@
+import { Textarea } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { Handle, Position } from "reactflow";
 
 export const TextNode = ({ id, data }) => {
-  const [currText, setCurrText] = useState(data?.text || "{{input}}");
+  const [currText, setCurrText] = useState(data?.text || "");
   const [handles, setHandles] = useState([]);
+
+  const defaultHandleStyle = {
+    background: "#fff",
+    width: "15px",
+    height: "15px",
+    border: "1px solid #000",
+  };
 
   // Function to handle text changes
   const handleTextChange = (e) => {
@@ -33,23 +41,24 @@ export const TextNode = ({ id, data }) => {
 
   return (
     <div
-      style={{
-        border: "1px solid black",
-        padding: "10px",
-        resize: "both",
-        position: "relative",
-        minHeight: "200px",
-      }}
+      className={`px-5 py-4 w-80 border-4 bg-white flex flex-col gap-2 border-blue-300 shadow-lg rounded-lg `}
     >
-      <Handle type="source" position={Position.Right} id={`${id}-output`} />
+      <Handle
+        type="source"
+        position={Position.Right}
+        id={`${id}-output`}
+        className="bg-white w-3 h-3 rounded-full border-1 border-purple-500"
+        style={defaultHandleStyle}
+      />
       <div>
-        <span>Text</span>
-      </div>
-      <div>
-        <textarea
+        <Textarea
+          label="Prompt"
+          placeholder="Enter text with variables like {{context}}"
           value={currText}
           onChange={handleTextChange}
-          placeholder="Enter text with variables like {{context}}"
+          variant="bordered"
+          radius="full"
+          className="w-full h-full text-xl"
         />
       </div>
 
@@ -59,7 +68,13 @@ export const TextNode = ({ id, data }) => {
           key={handle.id}
           style={{ position: "absolute", left: 0, top: handle.style.top }}
         >
-          <Handle type="target" position={Position.Left} id={handle.id} />
+          <Handle
+            type="target"
+            position={Position.Left}
+            id={handle.id}
+            className="bg-white w-3 h-3 rounded-full border-1 border-purple-500"
+            style={defaultHandleStyle}
+          />
           <div
             style={{
               position: "relative",
@@ -67,6 +82,7 @@ export const TextNode = ({ id, data }) => {
               left: "-35px",
               fontSize: "12px",
               color: "gray",
+              width: "100px",
             }}
           >
             {handle.variable}
