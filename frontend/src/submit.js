@@ -1,5 +1,5 @@
 import { Bounce, Slide, toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "react-toastify/dist/ReactToastify.css";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import { Button } from "@nextui-org/react";
@@ -15,14 +15,16 @@ export const SubmitButton = () => {
 
   const handleSubmit = async () => {
     try {
-      // Sending the nodes and edges to the backend
-      const response = await fetch(`http://localhost:8000/pipelines/parse`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nodes, edges }),
-      });
+      const response = await fetch(
+        "https://vectorshift-assignment.onrender.com/pipelines/parse",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nodes, edges }),
+        }
+      );
 
       const result = await response.json();
 
