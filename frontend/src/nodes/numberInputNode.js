@@ -1,17 +1,10 @@
 import { BaseNode } from "../components/BaseNode";
 
-export const InputNode = (props) => {
+export const NumberInputNode = (props) => {
   const { id, data } = props;
 
   const customFields = [
-    { label: "Name", name: "inputName", type: "text" },
-    {
-      label: "Type",
-      name: "inputType",
-      type: "select",
-      options: ["Text", "File"],
-      default: "Text",
-    },
+    { label: "Number", name: "inputNumber", type: "number", default: 0 },
   ];
 
   const inputHandles = [];
@@ -20,7 +13,7 @@ export const InputNode = (props) => {
   return (
     <BaseNode
       id={id}
-      label="Input"
+      label="Number Input"
       data={data}
       customFields={customFields}
       inputHandles={inputHandles}
