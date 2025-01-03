@@ -54,7 +54,7 @@ export const BaseNode = ({
       style={{
         ...nodeStyle,
       }}
-      className={`px-5 py-4 w-80 border-4 bg-white flex flex-col gap-2  border-blue-300 shadow-lg rounded-lg  ${className}`}
+      className={`px-5 py-4 w-80 border-2 bg-white flex flex-col gap-2  border-blue-600 shadow-lg rounded-lg  ${className}`}
     >
       <div>
         <span className="text-blue-500 text-lg">{label}</span>

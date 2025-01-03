@@ -13,26 +13,46 @@ import { TbMultiplier2X } from "react-icons/tb";
 
 export const PipelineToolbar = () => {
   return (
-    <div style={{ padding: "10px" }}>
+    <div className="bg-white">
       <div
         style={{
-          marginTop: "20px",
           display: "flex",
           flexWrap: "wrap",
           gap: "10px",
           boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
           padding: "20px",
+          backgroundColor: "white",
         }}
       >
         <DraggableNode type="customInput" label="Input" icon={<MdInput />} />
         <DraggableNode type="llm" label="LLM" icon={<TbBoxModel2 />} />
-        <DraggableNode type="customOutput" label="Output" icon={<MdOutlineOutput />} />
+        <DraggableNode
+          type="customOutput"
+          label="Output"
+          icon={<MdOutlineOutput />}
+        />
         <DraggableNode type="text" label="Text" icon={<CiText />} />
-        <DraggableNode type="numberInput" label="Number Input" icon={<GoNumber />} />
-        <DraggableNode type="checkboxNode" label="Checkbox" icon={<IoIosCheckboxOutline />} />
-        <DraggableNode type="stringConcatenate" label="String Concatenate" icon={<VscSymbolString />} />
-        <DraggableNode type="colorPicker" label="Color Picker" icon={<IoColorPaletteOutline />} />
-        <DraggableNode type="multiplierNode" label="Multiplier" icon={<TbMultiplier2X />} />
+        <DraggableNode type="numberInput" label="Input" icon={<GoNumber />} />
+        <DraggableNode
+          type="checkboxNode"
+          label="Checkbox"
+          icon={<IoIosCheckboxOutline />}
+        />
+        <DraggableNode
+          type="stringConcatenate"
+          label="Concatenate"
+          icon={<VscSymbolString />}
+        />
+        <DraggableNode
+          type="colorPicker"
+          label="Color"
+          icon={<IoColorPaletteOutline />}
+        />
+        <DraggableNode
+          type="multiplierNode"
+          label="Multiplier"
+          icon={<TbMultiplier2X />}
+        />
       </div>
     </div>
   );

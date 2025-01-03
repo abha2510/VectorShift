@@ -1,4 +1,4 @@
-import { toast, ToastContainer } from "react-toastify";
+import { Bounce, Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
@@ -27,15 +27,7 @@ export const SubmitButton = () => {
       const result = await response.json();
 
       toast.success(
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "0.5em",
-            fontSize: "0.9em",
-            gap: "0.5em",
-          }}
-        >
+        <div className="flex flex-col p-1 text-base gap-1">
           <span>
             <b>Nodes:</b> {result.num_nodes}
           </span>
@@ -54,7 +46,10 @@ export const SubmitButton = () => {
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
+          draggable: true,
           progress: undefined,
+          theme: "dark",
+          transition: Bounce,
         }
       );
     } catch (error) {
@@ -65,23 +60,32 @@ export const SubmitButton = () => {
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
+        draggable: true,
         progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
     }
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="flex items-center justify-center fixed bottom-10 left-0 right-0">
       <Button onClick={handleSubmit} color="primary" size="lg" type="submit">
         Submit
       </Button>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   );
 };

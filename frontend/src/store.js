@@ -1,5 +1,3 @@
-// store.js
-
 import { create } from "zustand";
 import {
   addEdge,
@@ -40,9 +38,17 @@ export const useStore = create((set, get) => ({
       edges: addEdge(
         {
           ...connection,
-          type: "smoothstep",
           animated: true,
-          markerEnd: { type: MarkerType.Arrow, height: "20px", width: "20px" },
+          type: "smoothstep",
+          markerEnd: {
+            width: 15,
+            height: 15,
+            color: "#6B46C1",
+          },
+          style: {
+            strokeWidth: 2,
+            stroke: "#6B46C1",
+          },
         },
         get().edges
       ),
@@ -54,7 +60,6 @@ export const useStore = create((set, get) => ({
         if (node.id === nodeId) {
           node.data = { ...node.data, [fieldName]: fieldValue };
         }
-
         return node;
       }),
     });

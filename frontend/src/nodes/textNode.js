@@ -41,7 +41,7 @@ export const TextNode = ({ id, data }) => {
 
   return (
     <div
-      className={`px-5 py-4 w-80 border-4 bg-white flex flex-col gap-2 border-blue-300 shadow-lg rounded-lg `}
+      className={`px-5 py-4 w-80 border-2 bg-white flex flex-col gap-2 border-blue-600 shadow-lg rounded-lg `}
     >
       <Handle
         type="source"
