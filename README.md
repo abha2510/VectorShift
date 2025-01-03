@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# VectorShift Frontend Technical Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Demo](https://vectorshiftassignment.vercel.app/)
 
-## Available Scripts
+## Assignment Overview
 
-In the project directory, you can run:
+This repository contains the solution to the **VectorShift Frontend Technical Assessment**. The project consists of a frontend built using **React** and a backend implemented with **FastAPI**. The goal of this project is to create a flexible and reusable node abstraction, enhance the styling, improve the text node logic, and integrate the frontend with the backend for pipeline submission.
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### How to Run
 
-### `npm test`
+1. **Frontend**:
+   - Navigate to the `/frontend` folder.
+   - Run the following commands:
+     ```bash
+     npm install
+     npm start
+     ```
+   - The frontend will start on `http://localhost:3000`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Backend**:
+   - Navigate to the `/backend` folder.
+   - Run the following command:
+     ```bash
+     uvicorn main:app --reload
+     ```
+   - The backend will start on `http://localhost:8000`.
 
-### `npm run build`
+## Part 1: Node Abstraction
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A reusable and flexible node abstraction was created to simplify building new nodes. This abstraction allows you to easily add new nodes by defining the following:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Input Handles** and **Output Handles**
+- Customizable fields (e.g., text inputs, dropdowns)
+- Shared UI components across different node types
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### New Nodes Created:
+- Checkbox Node
+- Color Picker Node
+- Input Node
+- String Concatenate Node
+- Multiplier Node
 
-### `npm run eject`
+## Part 2: Styling
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Styling was applied using **TailwindCSS** and **NextUI** to create a modern and clean interface. The design prioritizes usability, with proper visual cues for node connections and interactive components.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Features:
+- Drag-and-drop pipeline builder
+- Interactive components with smooth transitions and hover effects
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Part 3: Text Node Logic
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The **Text Node** was improved with the following functionality:
 
-## Learn More
+1. **Dynamic Resizing**: The node adjusts its width and height based on the text input to improve visibility.
+2. **Variable Detection**: Users can define variables inside double curly braces (`{{ variable }}`). The node automatically generates input handles for these variables, allowing them to interact with other nodes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Part 4: Backend Integration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The frontend is integrated with the **FastAPI** backend. When a pipeline is submitted, the frontend sends the nodes and edges to the backend. The backend performs the following:
 
-### Code Splitting
+- Calculates the number of nodes and edges.
+- Checks if the pipeline forms a **Directed Acyclic Graph (DAG)** using **NetworkX**.
+- Returns a result to the frontend, which displays it via a toast notification.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Backend Endpoint:
+```http
+POST /pipelines/parse
+```
 
-### Analyzing the Bundle Size
+#### Request:
+```
+{
+    "nodes": [...],
+    "edges": [...]
+}
+```
+#### Response:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+{
+    "num_nodes": 5,
+    "num_edges": 4,
+    "is_dag": true
+}
+```
 
-### Making a Progressive Web App
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Frontend:
+- React
+- React Flow
+- NextUI
+- TailwindCSS
+- Zustand (state management)
+- React Toastify (for notifications)
 
-### Advanced Configuration
+### Backend:
+- FastAPI
+- NetworkX (for DAG validation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Future Improvements
+- Add more customizable node types.
+- Improve validation of user inputs in nodes.
+- Enhance error handling for pipeline submission.
+- Imrove Styling
 
-### Deployment
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![image](https://github.com/user-attachments/assets/d9955d85-ded0-4a40-b607-fe41c0c62b48)
 
-### `npm run build` fails to minify
+![image](https://github.com/user-attachments/assets/7322a9c6-856a-4699-b272-17ed4b64a7d6)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://github.com/user-attachments/assets/47bb08bb-0338-44e3-b5c3-8cdc3e8e7191)
+
+![image](https://github.com/user-attachments/assets/1e058752-c3cd-4613-ab41-06a519e5ef76)
+
+
