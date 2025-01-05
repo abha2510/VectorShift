@@ -1,6 +1,5 @@
 # VectorShift Frontend Technical Assessment
 
-[Live Demo](https://vectorshiftassignment.vercel.app/)
 
 ## Assignment Overview
 
