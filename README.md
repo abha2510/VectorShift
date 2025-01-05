@@ -107,14 +107,6 @@ POST /pipelines/parse
 - Enhance error handling for pipeline submission.
 - Imrove Styling
 
-## Screenshots
 
-![image](https://github.com/user-attachments/assets/d9955d85-ded0-4a40-b607-fe41c0c62b48)
-
-![image](https://github.com/user-attachments/assets/7322a9c6-856a-4699-b272-17ed4b64a7d6)
-
-![image](https://github.com/user-attachments/assets/47bb08bb-0338-44e3-b5c3-8cdc3e8e7191)
-
-![image](https://github.com/user-attachments/assets/1e058752-c3cd-4613-ab41-06a519e5ef76)
 
 
